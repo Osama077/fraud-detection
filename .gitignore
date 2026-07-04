@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Environment
+.env
+.env.prod
+.env.local
+
+# ML artifacts (large binary files)
+backend/app/ml/artifacts/*.pkl
+backend/app/ml/artifacts/*.joblib
+!backend/app/ml/artifacts/.gitkeep
+ml/data/creditcard.csv
+ml/reports/
+ml/models/*.pkl
+ml/models/*.json
+
+# Node
+node_modules/
+.next/
+frontend/.env.local
+frontend/.env
+
+# Docker
+.dockerignore
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
