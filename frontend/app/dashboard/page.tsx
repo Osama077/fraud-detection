@@ -49,7 +49,7 @@ export default function DashboardPage() {
     <div className="flex h-screen overflow-hidden">
       <Sidebar />
       <main className="flex-1 overflow-y-auto p-8">
-        <Topbar title="Dashboard" subtitle="Real-time fraud detection overview" />
+        <TopBar title="Dashboard" subtitle="Real-time fraud detection overview" />
 
         {/* KPI Cards */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">

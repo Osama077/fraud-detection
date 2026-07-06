@@ -65,6 +65,8 @@ async def batch_status(job_id: str):
                               processed=meta.get("processed"), total=meta.get("total"))
     elif result.state == "SUCCESS":
         info = result.result or {}
+        if info.get("status") == "failed":
+            return BatchJobStatus(job_id=job_id, status="failed")
         return BatchJobStatus(
             job_id=job_id, status="completed",
             total=info.get("total"),

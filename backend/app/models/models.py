@@ -150,7 +150,7 @@ class AuditLog(Base):
     action = Column(String(100), nullable=False, index=True)
     resource_type = Column(String(50), nullable=True)
     resource_id = Column(UUID(as_uuid=True), nullable=True)
-    metadata = Column(JSONB, default={})
+    audit_metadata = Column("metadata", JSONB, default={})
     ip_address = Column(INET, nullable=True)
     created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), index=True)
 

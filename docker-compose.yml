@@ -109,11 +109,11 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     container_name: fraud_flower
-    command: celery -A app.core.celery_app flower --port=5555 --basic_auth=${FLOWER_USER:-admin}:${FLOWER_PASSWORD:-flower_pass}
+    command: python -m flower --broker=${CELERY_BROKER_URL} flower --port=5555 --basic_auth=${FLOWER_USER:-admin}:${FLOWER_PASSWORD:-flower_pass}
     env_file: .env
     environment:
-      CELERY_BROKER_URL: redis://redis:6379/1
-      CELERY_RESULT_BACKEND: redis://redis:6379/2
+      CELERY_BROKER_URL: redis://:${REDIS_PASSWORD:-}@redis:6379/1
+      CELERY_RESULT_BACKEND: redis://:${REDIS_PASSWORD:-}@redis:6379/2
     ports:
       - "5555:5555"
     depends_on:
@@ -133,6 +133,9 @@ services:
     environment:
       NEXT_PUBLIC_API_URL: http://localhost/api/v1
       NEXT_PUBLIC_APP_NAME: FraudShield
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
     ports:
       - "3000:3000"
     depends_on:

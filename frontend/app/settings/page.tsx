@@ -42,7 +42,7 @@ export default function SettingsPage() {
     <div className="flex h-screen overflow-hidden">
       <Sidebar />
       <main className="flex-1 overflow-y-auto p-8">
-        <Topbar title="Settings" subtitle="Profile and system preferences" />
+        <TopBar title="Settings" subtitle="Profile and system preferences" />
         <div className="max-w-2xl space-y-6">
 
           {/* Profile */}

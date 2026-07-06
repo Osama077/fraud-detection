@@ -3,7 +3,7 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # System deps
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --fix-missing \
     gcc \
     curl \
     libpq-dev \
@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
 
 # Python deps
 COPY requirements.txt requirements-dev.txt ./
-RUN pip install --no-cache-dir --retries 5 --timeout 60 -r requirements.txt && pip install --no-cache-dir --retries 5 --timeout 60 -r requirements-dev.txt
+RUN pip install --no-cache-dir --retries 5 --timeout 60 -r requirements-dev.txt && pip install --no-cache-dir --retries 5 --timeout 60 -r requirements.txt
 
 # Copy source
 COPY . .
